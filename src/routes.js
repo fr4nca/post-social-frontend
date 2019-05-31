@@ -5,6 +5,7 @@ Vue.use(Router)
 
 import Posts from './pages/Posts'
 import Login from './pages/Login'
+import Register from './pages/Register'
 
 const routes = [
   {
@@ -16,6 +17,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   }
 ]
 

@@ -32,6 +32,15 @@ const actions = {
       console.log(e.response.data.message)
     }
   },
+  async register({ commit }, user) {
+    try {
+      await axios.post('/user', user)
+
+      router.push('/')
+    } catch (e) {
+      console.log(e.response.data.message)
+    }
+  },
   async logout({ commit }) {
     localStorage.removeItem('@PostSocial:token')
     setAuthToken(null)
