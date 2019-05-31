@@ -20,7 +20,8 @@
               <router-link class="nav-link" to="/">Posts</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/login">Login</router-link>
+              <router-link v-if="!isAuthenticated" class="nav-link" to="/login">Login</router-link>
+              <router-link v-if="isAuthenticated" class="nav-link" to="/login">Logout</router-link>
             </li>
           </ul>
         </div>
@@ -30,9 +31,14 @@
 </template>
 
 <script>
-  export default {
-    name: "Navbar"
-  };
+import { mapGetters } from "vuex";
+
+export default {
+  name: "Navbar",
+  computed: {
+    ...mapGetters(["isAuthenticated"])
+  }
+};
 </script>
 
 <style>
