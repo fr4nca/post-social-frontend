@@ -20,8 +20,26 @@
               <router-link class="nav-link" to="/">Posts</router-link>
             </li>
             <li class="nav-item">
-              <router-link v-if="!isAuthenticated" class="nav-link" to="/login">Login</router-link>
-              <router-link v-if="isAuthenticated" class="nav-link" to="/login">Logout</router-link>
+              <router-link v-if="!isAuthenticated" class="nav-link" to="/login"
+                >Login</router-link
+              >
+            </li>
+            <li class="nav-item">
+              <router-link
+                v-if="!isAuthenticated"
+                class="nav-link"
+                to="/register"
+                >Register</router-link
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                style="cursor: pointer;"
+                v-if="isAuthenticated"
+                class="nav-link"
+                @click="logout"
+                >Logout</a
+              >
             </li>
           </ul>
         </div>
@@ -31,14 +49,17 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+  import { mapGetters, mapActions } from "vuex";
 
-export default {
-  name: "Navbar",
-  computed: {
-    ...mapGetters(["isAuthenticated"])
-  }
-};
+  export default {
+    name: "Navbar",
+    computed: {
+      ...mapGetters(["isAuthenticated"])
+    },
+    methods: {
+      ...mapActions(["logout"])
+    }
+  };
 </script>
 
 <style>
